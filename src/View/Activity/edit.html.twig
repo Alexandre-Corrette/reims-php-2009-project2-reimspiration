@@ -1,0 +1,180 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Modification d'activité{{parent()}}
+{% endblock %}
+
+{% block header %}
+	<section class="header">
+		<div class="top-logo">
+			<a href="/"><img src="/assets/images/logo-reimspiration.svg" alt="logo REIMSpiration"/></a>
+		</div>
+		<div class="search-container">
+			<h1 class="edit-activity-title">Modification d'activité</h1>
+			<div class="top-link-btn">
+				<a href="/">
+					<i class="fa fa-home"></i>
+				</a>
+				<div class="tooltip-add">
+					<a href="/add">
+						<i class="fa fa-plus"></i>
+					</a>
+					<span class="tooltiptext-add">Ajouter une activité</span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<span class="covid-banner">
+		<div>
+			<span class="covid-text">⚠️ Toutes les informations et actualités liées au contexte sanitaire actuel de la Covid 19</span>
+			<a href="/info-covid">
+				<button class="covid-btn">En savoir plus</button>
+			</a>
+		</div>
+	</span>
+{% endblock %}
+
+{# <div class="tooltip">Hover over me
+  <span class="tooltiptext">Tooltip text</span>
+</div> #}
+
+{% block editActivity %}
+	<section class="action-block-activity">
+		<div class="container-activity-action">
+			<div class="form-block">
+				<form action="" method="post" enctype="multipart/form-data">
+					<input
+					type="hidden" value="{{ activity.id }}" name="id">
+					{# CATEGORY #}
+					<div class="form-block-inline">
+						<div class="tooltip">
+							<i class="fa fa-question-circle"></i>
+							<span class="tooltiptext">Max 50 caractères<br><br>Si plusieurs catégories sont concernées, séparer les catégories par une virgule et sans espace entre les deux.<br><br><span style="color: #000000;">Ex : ART,CINEMA</span>
+							</span>
+						</div>
+						<label class="label-name" for="name">Catégorie(s)</label>
+						<input type="text" id="name" name="name" value="{{ category }}">
+					</div>
+					{# MARKDOWN #}
+					<div class="form-block-inline">
+						<div class="tooltip">
+							<i class="fa fa-question-circle"></i>
+							<span class="tooltiptext">Max 50 caractères</span>
+						</div>
+						<label class="label-name" for="markdown">Titre activité</label>
+						<input type="text" id="markdown" name="markdown" value="{{ activity.markdown }}">
+					</div>
+					{# ACTIVITY TITLE #}
+					<div class="form-block-inline">
+						<div class="tooltip">
+							<i class="fa fa-question-circle"></i>
+							<span class="tooltiptext">Max 250 caractères</span>
+						</div>
+						<label class="label-name" for="description">Description</label>
+					</div>
+					<div>
+						<textarea id="description" name="description" required spellcheck="true" rows="5" cols="50" tabindex="4">{{ activity.description }}</textarea>
+					</div>
+					{# PERIOD #}
+					<div class="form-block-inline">
+						<label class="label-period" for="date_start">Période</label>
+					</div>
+					<div class="block-date">
+						<input type="date" id="date_start" name="date_start" value="{{ activity.date_start }}">
+						<input type="date" id="date_end" name="date_end" value="{{ activity.date_start }}">
+					</div>
+					{# AGE #}
+					<div class="champ">
+						<div class="label-name">Public concerné</div>
+						<div class="block-age">
+							<div>
+								<input type="checkbox" id="3-5" name="ranges[]" value="1">
+								<label for="3-5">3 - 5 ans</label>
+							</div>
+							<div>
+								<input type="checkbox" id="5-8" name="ranges[]" value="2">
+								<label for="5-8">5 - 8 ans</label>
+							</div>
+							<div>
+								<input type="checkbox" id="8-10" name="ranges[]" value="3">
+								<label for="8-10">8 - 10 ans</label>
+							</div>
+							<div>
+								<input type="checkbox" id="10-13" name="ranges[]" value="4">
+								<label for="10-13">10 - 13 ans</label>
+							</div>
+							<div>
+								<input type="checkbox" id="adolescant" name="ranges[]" value="5">
+								<label for="adolescant">Adolescents</label>
+							</div>
+							<div>
+								<input type="checkbox" id="adulte" name="ranges[]" value="6">
+								<label for="adulte">Adultes</label>
+							</div>
+						</div>
+					</div>
+					{# PRICE #}
+					<div class="form-block-inline">
+						<input type="radio" id="gratuit" name="price" value="{{ activity.price }}">
+						<label for="gratuit">Gratuit</label>
+						<input type="radio" id="payant" name="price" value="{{ activity.price }}">
+						<label for="payant">Payant</label>
+					</div>
+					{# IMAGE #}
+					<div class="form-block-inline">
+						<div class="tooltip">
+							<i class="fa fa-question-circle"></i>
+							<span class="tooltiptext">Images carrées pour éviter tout rognage.<br><br><span style="color: #000000; text-decoration: underline;">Formats acceptés :</span><br>jpg, jpeg, png, pdf</span>
+						</div>
+						<label class="label-name-small" for="img">Image</label>
+						<input type="file" id="img" name="img">
+					</div>
+					{# LINK #}
+					<div class="form-block-inline">
+						<div class="tooltip">
+							<i class="fa fa-question-circle"></i>
+							<span class="tooltiptext">Lien donnant plus d'infos sur l'activité</span>
+						</div>
+						<label class="label-name-small" for="link">Lien</label>
+						<input type="url" id="link" name="link" value="{{ activity.link }}" placeholder="https://example.com">
+					</div>
+					{# SUBMIT BUTTON #}
+					<input class="input-button" type="submit" value="Valider">
+				{# <div class="block-btn">
+								                        <a href="/delete?id={{activity.id}}"><button class="input-button">Supprimer</button></a>
+								                        <a href="/"><button class="input-button">Retour</button></a>
+								                    </div> #}
+					{# <input class="input-button" type="submit" value="Valider">
+										                    <a href="/"><button class="input-button">Retour</button></a> #}
+				</form>
+				<div class="block-button-back">
+					<a href="/delete?id={{activity.id}}">
+						<button class="input-button-back">Supprimer</button>
+					</a>
+					<a href="/">
+						<button class="input-button-back">Retour</button>
+					</a>
+				</div>
+			</div>
+			<div class="illustration-block-show">
+				<img src="{{ activity.img }}" alt="{{ activity.markdown }}"/>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block footer %}
+	<section class="footer">
+		<div class="partner-block">
+			<span class="partner-introduction">En collaboration avec</span>
+			<span class="partner-logo">
+				<a href="http://www.lapelliculeensorcelee.org/"><img src="http://www.lapelliculeensorcelee.org/theme/pellicule/images/logo.png" alt="logo la pellicule ensorcelee"/></span>
+			</div>
+			<div class="footer-nav">
+				<ul class="footer-menu">
+					<li>
+						<a href="#">A propos</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+	{% endblock %}

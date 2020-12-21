@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %} - REIMSpiration{% endblock %}</title>
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% block stylesheet %}{% endblock %}
+        <link rel="icon" href="/assets/images/favicon-reimspiration.png">
+    </head>
+
+    <body>
+
+        {% block header %}{% endblock %}
+
+        {% block scrollToTop %}{% endblock %}
+
+        {% block banner %}{% endblock %}
+
+        {% block tag %}{% endblock %}
+
+        {% block showActivity %}{% endblock %}
+
+        {% block addActivity %}{% endblock %}
+
+        {% block editActivity %}{% endblock %}
+
+        {% block content %}{% endblock %}
+
+        {% block wall %}{% endblock %}
+
+        {% block action %}{% endblock %}
+
+        {% block footer %}{% endblock %}
+
+        {% block javascript %}
+            <script type="text/javascript" src="/assets/js/script.js"></script>
+        {% endblock %}
+    </body>
+</html>

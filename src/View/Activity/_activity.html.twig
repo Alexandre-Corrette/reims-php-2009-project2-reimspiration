@@ -1,0 +1,100 @@
+<div class="form-block">
+                <form method="post">
+                    <input type="hidden" value="{{ activities.id }}" name="id">
+                    {# CATEGORY #}
+                    <div class="form-block-inline">
+                        <div class="tooltip"><i class="fa fa-question-circle"></i>
+                            <span class="tooltiptext">Maximum 50 caractères</span>
+                        </div>
+                        <label class="label-name" for="name">Catégorie</label>
+                        <input type="text" id="name" name="name" required value="{{ categories.name }}">
+                    </div>
+                    {# MARKDOWN #}
+                    <div class="form-block-inline">
+                        <div class="tooltip"><i class="fa fa-question-circle"></i>
+                            <span class="tooltiptext">Maximum 50 caractères</span>
+                        </div>
+                        <label class="label-name" for="markdown">Titre activité</label>
+                        <input type="text" id="markdown" name="markdown" required value="{{ activities.markdown }}">
+                    </div>
+                    {# ACTIVITY TITLE #}
+                    <div class="form-block-inline">
+                        <div class="tooltip"><i class="fa fa-question-circle"></i>
+                            <span class="tooltiptext">Maximum 250 caractères</span>
+                        </div>
+                        <label class="label-name" for="description">Description</label>
+                    </div>
+                    <div>
+                        <textarea id="description" name="description" required spellcheck="true" rows="5" cols="50" tabindex="4" value="{{ activities.description }}"></textarea>
+                    </div>
+                    {# PERIOD #}
+                    <div class="form-block-inline">
+                        <label class="label-period" for="date_start">Période</label>
+                    </div>
+                    <div class="block-date">
+                        <input type="date" id="date_start" name="date_start" required min="2020-11-01" max="2411-12-31">
+                        <input type="date" id="date_end" name="date_end" required min="2020-11-01" max="2411-12-31">
+                    </div>
+                    {# AGE #}
+                    <div class="champ">
+                        <div class="label-name">Public concerné</div>
+                        <div class="block-age">
+                            <div>
+                                <input type="checkbox" id="3-5" name="ranges[]" value="3 - 5 ans">
+                                <label for="3-5">3 - 5 ans</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="5-8" name="ranges[]" value="5 - 8 ans">
+                                <label for="5-8">5 - 8 ans</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="8-10" name="ranges[]" value="8 - 10 ans">
+                                <label for="8-10">8 - 10 ans</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="10-13" name="ranges[]" value="10 - 13 ans">
+                                <label for="10-13">10 - 13 ans</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="adolescents" name="ranges[]" value="Adolescents">
+                                <label for="adolescents">Adolescents</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="adultes" name="ranges[]" value="Adultes">
+                                <label for="adultes">Adultes</label>
+                            </div>
+                        </div>
+                    </div>
+                    {# PRICE #}
+                    <div class="form-block-inline">
+                        <input type="radio" id="gratuit" name="price" value="Gratuit" checked>
+                        <label for="gratuit">Gratuit</label>
+                        <input type="radio" id="payant" name="price" value="Payant">
+                        <label for="payant">Payant</label>
+                    </div>
+                    {# IMAGE #}
+                    <div class="form-block-inline">
+                        <div class="tooltip"><i class="fa fa-question-circle"></i>
+                            <span class="tooltiptext">Images carrées pour éviter tout rognage (jpg, jpeg ou png)</span>
+                        </div>
+                        <label class="label-name-small" for="img">Image</label>
+                        <input type="file" id="img" name="img" accept="image/png, image/jpeg">
+                    </div>
+                    {# LINK #}
+                    <div class="form-block-inline">
+                        <div class="tooltip"><i class="fa fa-question-circle"></i>
+                            <span class="tooltiptext">Lien extérieur de l'activité</span>
+                        </div>
+                        <label class="label-name-small" for="link">Lien</label>
+                        <input type="url" id="link" name="link" value="{{ activities.link }}" placeholder="https://example.com">
+                    </div>
+                    {# SUBMIT BUTTON #}
+                    <input class="input-button" type="submit" value="Valider">
+                </form>
+                    <div class="block-button-back">
+                        <a href="/"><button class="input-button-back">Retour</button></a>
+                    </div>
+            </div>
+            <div class="illustration-block-add">
+                <img src="/assets/images/logo-ajout-activite.svg" alt="logo REIMSpiration - Ajout d'activité" />
+            </div>

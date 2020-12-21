@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Activité{{parent()}}{% endblock %}
+
+{% block header %}
+    <section class="header">
+        <div class="top-logo">
+            <a href="/"><img src="/assets/images/logo-reimspiration.svg" alt="logo REIMSpiration" /></a>
+        </div>
+        <div class="search-container">
+            <h1 class="edit-activity-title">{{ activity.markdown }}</h1>
+            <div class="top-link-btn">
+                <a href="/"><i class="fa fa-home"></i></a>
+                <div class="tooltip-add">
+                    <a href="/add"><i class="fa fa-plus"></i></a>
+                    <span class="tooltiptext-add">Ajouter une activité</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <span class="covid-banner">
+        <div>
+            <span class="covid-text">⚠️ Toutes les informations et actualités liées au contexte sanitaire actuel de la Covid 19</span>
+            <a href="/info-covid"><button class="covid-btn">En savoir plus</button></a>
+        </div>
+    </span>
+{% endblock %}
+
+{% block showActivity %}
+    <section class="action-block-activity">
+        <div class="container-activity-action">
+            <div class="form-block-activity">
+                <p class="label_activities-full">Catégorie(s)</p>
+                <span>{{ category }}</span>
+                <p class="label_activities-full">Description</p>
+                <span class="description-block">{{ activity.description }}</span>
+                <p class="label_activities-full">Période</p>
+                <span>Du {{ activity.date_start }}</span>
+                <span>au {{ activity.date_end }}</span>
+                <p class="label_activities-half">Public concerné</p>
+                <span>{{ ages }}</span>
+                <p class="label_activities-half"><i class="fa fa-euro"></i><i class="fa fa-euro"></i><span class="text">{{ activity.price }}</span></p>
+                <p class="label_activities-half"><i class="fa fa-globe"></i><span class="activity-link"><a href="{{ activity.link }}" target="_blank">Voir le site</a></span></p>
+                <div class="block-btn">
+                    <a href="/edit?id={{ activity.id }}"><button class="input-button">Modifier</button></a>
+                    {# <a href="/delete?id={{activities.id}}"><button class="input-button">Supprimer</button></a> #}
+                    <a href="/"><button class="input-button">Retour</button></a>
+                </div>
+            </div>
+            <div class="illustration-block-show">
+                <img src="{{ activity.img }}" alt="{{ activity.markdown }}" />
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <section class="footer">
+        <div class="partner-block">
+            <span class="partner-introduction">En collaboration avec</span>
+            <span class="partner-logo"><a href="http://www.lapelliculeensorcelee.org/"><img src="http://www.lapelliculeensorcelee.org/theme/pellicule/images/logo.png" alt="logo la pellicule ensorcelee" /></span>
+        </div>
+        <div class="footer-nav">
+            <ul class="footer-menu">
+                <li><a href="#">A propos</a></li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}

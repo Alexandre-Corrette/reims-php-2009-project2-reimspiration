@@ -1,0 +1,215 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Accueil{{parent()}}{% endblock %}
+
+{% block header %}
+    <section class="header">
+        <div class="top-logo">
+            <a href="/"><img src="/assets/images/logo-reimspiration.svg" alt="logo REIMSpiration" /></a>
+        </div>
+        <div class="search-container" role="navigation">
+            <form class="search-form" action="" method="POST">
+                <span class="search-text">Quand ?</span>
+                <span class="search-date">
+                    <input type="date" id="start" name="date_start">
+                </span>
+                <span class="search-date">
+                    <input type="date" id="end" name="date_end">
+                </span>
+                {# <span class="search-date"><input type="text" id="datepicker"></span>
+                <span class="search-date"><input type="text" id="datepicker"></span> #}
+                <button class="search-button" type="submit">RECHERCHER</button>
+            </form>
+            <div class="top-link-btn">
+                <a href="/"><i class="fa fa-home"></i></a>
+                <div class="tooltip-add">
+                    <a href="/add"><i class="fa fa-plus"></i></a>
+                    <span class="tooltiptext-add">Ajouter une activité</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <span class="covid-banner">
+        <div>
+            <span class="covid-text">⚠️ Toutes les informations et actualités liées au contexte sanitaire actuel de la Covid 19</span>
+            <a href="/info-covid"><button class="covid-btn">En savoir plus</button></a>
+        </div>
+    </span>
+{% endblock %}
+
+{% block scrollToTop %}
+    <a id="scroll-top" class="scroll-top-right" href="http://localhost:8000/#tag-block"><span class="fa fa-angle-up" aria-label="Scroll to the top of the page"></span></a>
+{% endblock %}
+
+{% block banner %}
+    <section class="banner">
+        <div class="banner-background">
+            <div class="banner-title">Trouvez votre activité culturelle en 1 clic</div>
+            {# <img src="/assets/images/banner-test-v1.png" alt="vue aerienne de la ville de Reims"/> #}
+        </div>
+    </section>
+{% endblock %}
+
+{% block tag %}
+    <section class="tag-block" id="tag-block">
+        <div class="tags">
+                {% for category in categories %}
+                    <li>
+                        <a href="/?category={{ category.id }}">
+                            <div class="category_tag">#{{ category.name }}</div>
+                        </a>
+                    </li>
+                {% else %}
+                    <li>Nothing to display</li>
+                {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block wall %}
+    <section class="wall-block">
+        <div class="wall">
+            {% for activity in activities %}
+                <li class="info-block">
+                    <a href="/show?id={{ activity.id }}">
+                        <div class="img-activity"><img class="wall-activity" src="{{ activity.img }}"/></div>
+                    </a>
+                    <div class="info-block-tag">
+                        <div class="tag-markdown">{{ activity.markdown }}</div>
+                            <div class="info-block-tag-down">
+                                <div class="date-block">
+                                    <span class="tag-date-left">Du {{ activity.date_start | date("d/m/Y") }}</span>
+                                    <span class="tag-date-right">au {{ activity.date_end | date("d/m/Y") }}</span>
+                                </div>
+                                <div class="price-block">
+                                    <span>{{ activity.price }}</span>
+                                </div>
+                            </div>
+                            <div class="edit-btn">
+                                <a href="/edit?id={{ activity.id }}" alt="{{ activity.markdown }}"><i class="fa fa-paint-brush"></i>
+                                </a>
+                            </div>
+                        </div>
+                </li>
+            {% else %}
+                <li>Nothing to display</li>
+            {% endfor %}
+        </div>
+        <div class="filter">
+            <div class="wall-filter">
+                <div class="filter-title">Affiner votre recherche</div>
+                <div class="filter-price-box">
+                    {% for category in categories %}
+                        <div>
+                            <script>
+                            function redirect{{ category.id }}(event) {
+                                const queryString = window.location.search;
+                                const urlParams = new URLSearchParams(queryString);
+                                const categories = urlParams.get('category');
+                                let categoriesAsArray = categories != null ? categories.split(',') : [];
+                                if (event.target.checked) {
+                                    categoriesAsArray.push({{ category.id }});
+                                }
+                                else {
+                                    categoriesAsArray = categoriesAsArray.filter((categoryId) => categoryId != {{ category.id }});
+                                }
+
+                                if (categoriesAsArray.length === 0) {
+                                    window.location.href = '/';
+                                }
+                                else {
+                                    window.location.href = '/?category=' + categoriesAsArray.join(',');
+                                }
+                            }
+                            </script>
+                            <label for="name"><input type="checkbox" {{ category.checked ? 'checked' : '' }} id="name" name="name" onchange="redirect{{ category.id }}(event)">{{ category.name }}</label>
+                        </div>
+                    {% else %}
+                            <li style="color:#FF0000; font-weight:600; list-style:none;">Nothing to display</li>
+                    {% endfor %}   
+                </div>
+                <div class="filter-price-box">
+                    {% for age in ages %}
+                        <div>
+                        <script>
+                            function redirect{{ age.id }}(event) {
+                                const queryString = window.location.search;
+                                const urlParams = new URLSearchParams(queryString);
+                                const ages = urlParams.get('ages');
+                                let agesAsArray = ages != null ? ages.split(',') : [];
+                                if (event.target.checked) {
+                                    agesAsArray.push({{ age.id }});
+                                }
+                                else {
+                                    agesAsArray = agesAsArray.filter((ageId) => ageId != {{ age.id }});
+                                }
+
+                                if (agesAsArray.length === 0) {
+                                    window.location.href = '/';
+                                }
+                                else {
+                                    window.location.href = '/?age=' + categoriesAsArray.join(',');
+                                }
+                            }
+                            </script>
+                            <input type="checkbox" {{ category.checked ? 'checked' : '' }} id="name" name="name" onchange="redirect{{ category.id }}(event)">
+                            <label for="name">{{ age.ranges }}</label>
+                        </div>
+                    {% else %}
+                        <li style="color:#FF0000; font-weight:600; list-style:none;">Nothing to display</li>
+                    {% endfor %}
+                </div>
+                <div class="filter-price-box">
+                    {% for price in prices %}
+                        <div>
+                            <input type="checkbox" id="price" name="price">
+                            <label for="price">{{ price.value }}</label>
+                        </div>
+                    {% else %}
+                        <li style="color:#FF0000; font-weight:600; list-style:none;">Nothing to display</li>
+                    {% endfor %}
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <section class="footer">
+        <div class="partner-block">
+            <span class="partner-introduction">En collaboration avec</span>
+            <span class="partner-logo"><a href="http://www.lapelliculeensorcelee.org/"><img src="http://www.lapelliculeensorcelee.org/theme/pellicule/images/logo.png" alt="logo la pellicule ensorcelee" /></span>
+        </div>
+        <div class="footer-nav">
+            <ul class="footer-menu">
+                <li><a href="/about-us">A propos</a></li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("scroll-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+{% endblock %}

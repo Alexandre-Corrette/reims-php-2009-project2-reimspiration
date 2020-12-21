@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Informations COVID{{parent()}}{% endblock %}
+
+{% block header %}
+    <section class="header">
+        <div class="top-logo">
+            <a href="/"><img src="/assets/images/logo-reimspiration.svg" alt="logo REIMSpiration" /></a>
+        </div>
+            <div class="search-container">
+                <h1 class="activity-title">Informations COVID</h1>
+                <div class="top-link-btn">
+                <a href="/"><i class="fa fa-home"></i></a>
+                <div class="tooltip-add">
+                    <a href="/add"><i class="fa fa-plus"></i></a>
+                    <span class="tooltiptext-add">Ajouter une activité</span>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <span class="covid-banner">
+        <div>
+
+            <span class="covid-text">⚠️ Toutes les informations et actualités liées au contexte sanitaire actuel de la Covid 19</span>
+            <a href="/info-covid"><button class="covid-btn">En savoir plus</button></a>
+        </div>
+    </span>
+{% endblock %}
+
+{% block content %}
+    <section class="block-info-covid">
+        <div>
+            <h1>Informations Covid 19</h1>
+            <h2>à Reims</h2>
+            <img src="/assets/images/informations-covid.png" alt="Informations mesures barrières Covid"/>
+        </div>
+        <div class="link-covid">
+            <div>Plus d'informations sur les sites :</div>
+            <div><a href="https://www.reims.fr/actualites/vous-avez-des-questions-sur-le-coronavirus-17428.html">Info Coronavirus COVID-19 | Reims.fr</a></div>
+            <div><a href="https://www.gouvernement.fr/info-coronavirus">Info Coronavirus COVID-19 | Gouvernement.fr</a></div>
+    </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <section class="footer">
+        <div class="partner-block">
+            <span class="partner-introduction">En collaboration avec</span>
+            <span class="partner-logo"><a href="http://www.lapelliculeensorcelee.org/"><img src="http://www.lapelliculeensorcelee.org/theme/pellicule/images/logo.png" alt="logo la pellicule ensorcelee" /></span>
+        </div>
+            <div class="footer-nav">
+                <ul class="footer-menu">
+                    <li><a href="/about-us">A propos</a></li>
+                </ul>
+            </div>
+    </section>
+{% endblock %}

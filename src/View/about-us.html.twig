@@ -1,0 +1,95 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}À propos{{parent()}}{% endblock %}
+
+{% block header %}
+    <section class="header">
+        <div class="top-logo">
+            <a href="/"><img src="/assets/images/logo-reimspiration.svg" alt="logo REIMSpiration" /></a>
+        </div>
+        <div class="search-container">
+            <h1 class="activity-title">À propos</h1>
+            <div class="top-link-btn">
+                <a href="/"><i class="fa fa-home"></i></a>
+                <div class="tooltip-add">
+                    <a href="/add"><i class="fa fa-plus"></i></a>
+                    <span class="tooltiptext-add">Ajouter une activité</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <span class="covid-banner">
+        <div>
+            <span class="covid-text">⚠️ Toutes les informations et actualités liées au contexte sanitaire actuel de la Covid 19</span>
+            <a href="/info-covid"><button class="covid-btn">En savoir plus</button></a>
+        </div>
+    </span>
+{% endblock %}
+
+{% block addActivity %}
+    <section class="page-block">
+        <div class="container-page-block">
+
+    <h2>Reimspiration, mais qui sommes-nous ?</h2>
+    <p>Reimspiration est un site de partage d'activités culturelles dans la ville de Reims et ses alentours. Vous n'avez pas d'idée de sortie ce week-end ? Ce mur est fait pour vous. Vous aimeriez faire découvrir un événement aux rémois ? N'attendez plus et cliquez sur le + et ajoutez votre activité en quelques cliques.</p>
+
+    <h2>Notre collaborateur</h2>
+    <p>La Pellicule Ensorcelée est une association qui a pour but de produire et de diffuser tous types de courts métrages (fiction, documentaire, animation), sur tous supports (8mm, 16mm, 35mm, vidéo, support numérique notamment). Elle organise des manifestations ponctuelles consacrées à la promotion et à la distribution de films et d'œuvres audiovisuelles de court, moyen ou long métrage.
+
+    Enfin, elle vise également à éditer et distribuer tous types de supports (livres, photos, expositions,  nouvelles technologies, etc.) liés à l'écriture cinématographique.
+
+    L'association propose des soirées cinéma composées de courts ou longs métrages. Elle présente tous les  genres de cinéma (fiction, animation, documentaire et expérimentation) réalisés en France, en Europe     ou dans le monde.
+
+    Les domaines de prédilection de l'association sont les films d'art et d'essai, les films du patrimoine, les films pour enfants et les documentaires.
+
+    Le plus souvent possible, l'association essaie de suivre les parcours de réalisateurs qui passent du    court au long métrage.</p>
+
+    <h2>Notre équipe</h2>
+    <div class="about-team">
+        <div class="about-person">
+            <div> Massinta Ait Braham</div>
+            <div class="about-logo">
+                <a href="https://github.com/MassintaAitBraham" target="_blank"><img class="gitLogoFooter" src="/assets/images/github.png" alt ="GitHub Massinta Ait Braham"></a>
+                <a href="https://www.linkedin.com/in/massinta-aitbraham/" target="_blank"><img class="linkedinLogo" src="/assets/images/linkedin.png" alt="Linked In Massinta Ait Braham"></a>
+            </div>
+        </div>
+        <div class="about-person">
+            <div>Christophe Chapleau</div>
+            <div class="about-logo">
+                <a href="https://github.com/cchapleau" target="_blank"><img class="gitLogoFooter" src="/assets/images/github.png" alt ="GitHub Christophe Chapleau"></a>
+                <a href="https://www.linkedin.com/in/cchapleau/" target="_blank"><img class="linkedinLogo" src="/assets/images/linkedin.png" alt="LinkedIn Christophe Chapleau"></a>
+            </div>
+        </div>
+        <div class="about-person">
+            <div>Denis Cîrlan</div>
+            <div class="about-logo">
+                <a href="https://github.com/dcirlan" target="_blank"><img class="gitLogoFooter" src="/assets/images/github.png" alt ="GitHub Denis Cîrlan " ></a>
+                <a href="https://www.linkedin.com/in/denis-c%C3%AErlan/" target="_blank"><img class="linkedinLogo" src="/assets/images/linkedin.png" alt="LinkedIn Denis Cîrlan" ></a>
+            </div>
+        </div>
+        <div class="about-person">
+            <div>Alexandre Corrette</div>
+            <div class="about-logo">
+            <a href="https://github.com/Alexandre-Corrette" target="_blank"><img class="gitLogoFooter" src="/assets/images/github.png" alt="GitHub Alexandre Corrette"></a>
+            <a href="https://www.linkedin.com/in/alexandre-corrette/" target="_blank"><img class="linkedinLogo" src="/assets/images/linkedin.png" alt="LinkedIn Alexandre Corrette"></a>
+        </div>
+    </div>
+    </section>
+        
+<div class="rights">© 2020 Promotion Horizon | Wild Code School Reims - Tous droits réservés</div>
+        
+{% endblock %}
+
+{% block footer %}
+    <section class="footer">
+        <div class="partner-block">
+            <span class="partner-introduction">En collaboration avec</span>
+            <span class="partner-logo"><a href="http://www.lapelliculeensorcelee.org/"><img src="http://www.lapelliculeensorcelee.org/theme/pellicule/images/logo.png" alt="logo la pellicule ensorcelee" /></span>
+        </div>
+            <div class="footer-nav">
+                <ul class="footer-menu">
+                    <li><a href="/about-us">A propos</a></li>
+                </ul>
+            </div>
+    </section>
+{% endblock %}
